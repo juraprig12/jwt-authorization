@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: jwt_auth_postgres_express
+    image: postgres:14.0-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=yura
+      - POSTGRES_PASSWORD=yura4620
+      - POSTGRES_DB=jwt_auth_postgres
+    #volumes:
+    #  - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+# Строка запуска создания контейнера с базой данных
+# docker-compose up -d
+# docker-compose up --build   # Это строка выполнения при самом первом запуске "docker-compose.yaml"
+
+# А в контейнере из Docker-desktop в Терминале подключение к созданной в docker-compose БАЗЕ db_migration: 
+# psql -U yura -d express_postgres
+
+
+# Запуск докер-контейнера с базой POSTGRES из командной строки терминала
+#========================================================================
+# docker run --name nest_crud_migration_base -e POSTGRES_USER=root -e POSTGRES_PASSWORD=admin -p 5432:5432 -d postgres:14.0-alpine
